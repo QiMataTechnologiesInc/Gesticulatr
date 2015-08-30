@@ -8,13 +8,20 @@ namespace WebApp
 {
     public class BandHub : Hub
     {
-        public void UpdateData(double x, double y, double z)
-        {
-            var _x = x;
-            var _y = y;
-            var _z = z;
+        private double _y;
 
-            Clients.All.sendData(x, y, z);
+        public void UpdateData(double y)
+        {
+            var moveY = string.Empty;
+
+            if (y > _y)
+                moveY = "right";
+            else
+                moveY = "left";
+
+            _y = y;
+
+            Clients.All.sendData(moveY);
         }
     }
 }

@@ -57,9 +57,12 @@ namespace BandApp
             {
                 using (IBandClient bandClient = await BandClientManager.Instance.ConnectAsync(bands[0]))
                 {
+                    IEnumerable<TimeSpan> supportedIntervals = bandClient.SensorManager.Accelerometer.SupportedReportingIntervals;
+                    bandClient.SensorManager.Accelerometer.ReportingInterval = supportedIntervals.Last();
+
                     bandClient.SensorManager.Accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
                     await bandClient.SensorManager.Accelerometer.StartReadingsAsync();
-                    await Task.Delay(TimeSpan.FromSeconds(30));
+                    await Task.Delay(TimeSpan.FromSeconds(120));
 
                     txtStatus.Text = "Band Stopping...";
                     await bandClient.SensorManager.Accelerometer.StopReadingsAsync();
@@ -84,7 +87,7 @@ namespace BandApp
 
                 txtEventCount.Text = samples.ToString();
 
-                connProxy.Invoke("updateData", x, y, z);
+                connProxy.Invoke("updateData", y);
 
                 txtCoorX.Text = x.ToString();
                 txtCoorY.Text = y.ToString();

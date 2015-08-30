@@ -104,8 +104,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jumbotron-narrow.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="BandData.html" />
+    <Content Include="imgs\Microsoft-Band.png" />
+    <Content Include="imgs\Microsoft-Band2.png" />
+    <Content Include="imgs\MicrosoftBand_Phone_RunMappingUI_RGB-2040.0.jpg" />
     <Content Include="index.html" />
-    <Content Include="index2.html" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

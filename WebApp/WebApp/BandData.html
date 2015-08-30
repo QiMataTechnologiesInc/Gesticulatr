@@ -10,6 +10,7 @@
     <title>SignalR Cooridantes Display</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="Content/jumbotron-narrow.css" rel="stylesheet" />
     <!--<style type="text/css">
         .container {
@@ -47,7 +48,15 @@
             var chat = $.connection.bandHub;
 
             chat.client.sendData = function (y) {
-                $('#CoorY').text("Y: " + y);
+                if (y == "left") {
+                    $('#arrow').remove();
+                    $('#CoorY').append('<i id="arrow" class="fa fa-arrow-left fa-5x"></i>');
+                } else {
+                    $('#arrow').remove();
+                    $('#CoorY').append('<i id="arrow" class="fa fa-arrow-right fa-5x"></i>');
+                }
+
+                //$('#CoorY').text("Y: " + y);
             };
 
             $.connection.hub.start().done(function () {

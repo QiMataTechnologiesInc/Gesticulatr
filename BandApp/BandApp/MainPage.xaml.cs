@@ -38,7 +38,7 @@ namespace BandApp
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
-            txtStatus.Text = "Looking for band...";
+            txtStatus.Text = "Searching...";
 
             IBandInfo[] bands = await BandClientManager.Instance.GetBandsAsync();
             await _conn.Start();
@@ -59,7 +59,7 @@ namespace BandApp
                 {
                     bandClient.SensorManager.Accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
                     await bandClient.SensorManager.Accelerometer.StartReadingsAsync();
-                    await Task.Delay(TimeSpan.FromSeconds(300));
+                    await Task.Delay(TimeSpan.FromSeconds(30));
 
                     txtStatus.Text = "Band Stopping...";
                     await bandClient.SensorManager.Accelerometer.StopReadingsAsync();
